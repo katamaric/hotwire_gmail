@@ -1,3 +1,9 @@
-<h3>Email Content :</h3>
-<%=email.object%>
-<%=email.body%>
+<%= turbo_frame_tag "view_email" do %>
+  <h1><%= @email.object %></h1></br>
+  <p><%= @email.body %></p>
+  <%= button_to "Delete", email_path(@email.id), method: :delete, data: { turbo_frame: "new_email" } %>
+  <br>
+  <%= button_to "Mark as read", @email, method: :patch,  data: { turbo_frame: "new_email" }  %>
+
+
+<% end %>

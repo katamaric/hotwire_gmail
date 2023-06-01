@@ -2,7 +2,6 @@ class EmailsController < ApplicationController
 
   def index
     @emails = Email.all
-    @email = Email.new
   end
 
   def create
@@ -15,10 +14,21 @@ class EmailsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to emails_path
+        redirect_to root_path
       end
     end
 
   end
+
+  def show
+    @email = Email.find(params[:id])
+    end
+  
+  def destroy
+    @email = Email.find(params[:id])
+    @email.destroy
+    redirect_to emails_path
+  end
+  
 
 end

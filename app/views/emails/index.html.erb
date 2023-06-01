@@ -14,8 +14,12 @@
             <tr>
               <td>
                 <ul id="email-list">
-                  <% @emails.each do |email| %>
-                    <li>"<%= email.object %>"</li>
+                  <% @emails.sort.reverse_each do |email| %>
+                    <li>
+                      "<%= email.object %>"
+                      <p><%=  link_to "See more", email_path(email.id), data: { turbo_frame: "view_email"} %></p>
+                    </li>
+                    <br>
                   <% end %>
                 </ul>
               </td>
@@ -27,9 +31,8 @@
     
     <div class="col-md-6">
       <h2>Email selected</h2>
-      <div id="selected-email">
-        <%=render 'email', email: @email%>
-      </div>
+        <%= turbo_frame_tag "view_email" do %>
+        <%end%>
     </div>
   </div>
 </div>
