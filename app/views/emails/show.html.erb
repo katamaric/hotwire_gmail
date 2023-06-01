@@ -3,6 +3,9 @@
   <p><%= @email.body %></p>
   <%= button_to "Delete", email_path(@email.id), method: :delete, data: { turbo_frame: "new_email" }, class: "btn btn-outline-danger" %>
   <br>
-  <%= button_to "Mark as unread", email_path(email.id), method: :patch, data: { turbo_frame: "new_email" }, class: "btn btn-outline-success" %>
-  <%= button_to "Mark as read", email_path(email.id), method: :patch, data: { turbo_frame: "new_email" }, class: "btn btn-outline-success" %>
+  <% if @email.read %>
+    <%= button_to "Mark as unread", email_path(@email.id), method: :patch, data: { turbo_frame: "new_email" }, class: "btn btn-outline-success" %>
+  <% else %>
+    <%= button_to "Mark as read", email_path(@email.id), method: :patch, data: { turbo_frame: "new_email" }, class: "btn btn-outline-success" %>
+  <% end %>
 <% end %>
