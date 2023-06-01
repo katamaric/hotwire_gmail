@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h2>List of emails</h2>
-      <%= button_to "Receive an email", emails_path, data: { turbo_frame: "new_email" }, class: "btn btn-primary btn-block" %>
+      <h2>List of emails :</h2>
+      <%= button_to "Receive an email", emails_path, data: { turbo_frame: "new_email" }, class: "btn btn-outline-info" %>
       <%= turbo_frame_tag "new_email" do %>
         <table class="table">
           <thead>
@@ -30,7 +30,7 @@
     </div>
     
     <div class="col-md-6">
-      <h2>Email selected</h2>
+      <h2>Email selected :</h2>
         <%= turbo_frame_tag "view_email" do %>
         <%end%>
     </div>
