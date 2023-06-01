@@ -1,38 +1,37 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <h2>List of emails :</h2>
-      <%= button_to "Receive an email", emails_path, data: { turbo_frame: "new_email" }, class: "btn btn-outline-info" %>
-      <%= turbo_frame_tag "new_email" do %>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Object</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <ul id="email-list">
-                  <% @emails.sort.reverse_each do |email| %>
-                    <li>
-                      "<%= email.object %>"
-                      <p><%=  link_to "See more", email_path(email.id), data: { turbo_frame: "view_email"} %></p>
-                    </li>
-                    <br>
-                  <% end %>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      <% end %>
-    </div>
-    
-    <div class="col-md-6">
-      <h2>Email selected :</h2>
-        <%= turbo_frame_tag "view_email" do %>
-        <%end%>
+<%= turbo_frame_tag "new_email" do %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>List of emails :</h2>
+        <%= button_to "Receive an email", emails_path, data: { turbo_frame: "new_email" }, class: "btn btn-outline-info" %>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Object</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <ul id="email-list">
+                    <% @emails.sort.reverse_each do |email| %>
+                      <li>
+                        "<%= email.object %>"
+                        <p><%=  link_to "See more", email_path(email.id), data: { turbo_frame: "view_email"} %></p>
+                      </li>
+                      <br>
+                    <% end %>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-6">
+          <h2>Email selected :</h2>
+            <%= turbo_frame_tag "view_email" do %>
+            <%end%>
+        </div>
     </div>
   </div>
-</div>
+<% end %>
