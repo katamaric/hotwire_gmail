@@ -19,6 +19,10 @@
                         "<%= email.object %>"
                         <p><%=  link_to "See more", email_path(email.id), data: { turbo_frame: "view_email"} %></p>
                       </li>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault<%= email.id %>" <%= email.read? ? 'checked' : '' %>>
+                        <label class="form-check-label" for="flexSwitchCheckDefault<%= email.id %>">Read</label>
+                      </div>
                       <br>
                     <% end %>
                   </ul>

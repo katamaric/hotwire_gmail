@@ -1,9 +1,8 @@
 <%= turbo_frame_tag "view_email" do %>
-  <h3><%= @email.object %></h3></br>
+  <h3><%= @email.object %></h3><br>
   <p><%= @email.body %></p>
   <%= button_to "Delete", email_path(@email.id), method: :delete, data: { turbo_frame: "new_email" }, class: "btn btn-outline-danger" %>
   <br>
-  <%= button_to "Mark as read", @email, method: :patch,  data: { turbo_frame: "new_email" }, class: "btn btn-outline-success"  %>
-
-
+  <%= button_to "Mark as unread", email_path(email.id), method: :patch, data: { turbo_frame: "new_email" }, class: "btn btn-outline-success" %>
+  <%= button_to "Mark as read", email_path(email.id), method: :patch, data: { turbo_frame: "new_email" }, class: "btn btn-outline-success" %>
 <% end %>

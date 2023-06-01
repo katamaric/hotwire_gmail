@@ -5,7 +5,6 @@ class EmailsController < ApplicationController
   end
 
   def create
-    require 'faker'
 
     @email = Email.create(
       object: Faker::JapaneseMedia::StudioGhibli.movie,
@@ -22,7 +21,8 @@ class EmailsController < ApplicationController
 
   def show
     @email = Email.find(params[:id])
-    end
+  end
+
   
   def destroy
     @email = Email.find(params[:id])
@@ -30,5 +30,11 @@ class EmailsController < ApplicationController
     redirect_to root_path
   end
   
+
+  def update
+    email = Email.find(params[:id])
+    email.update(read: !email.read)
+    redirect_to emails_path
+  end
 
 end
